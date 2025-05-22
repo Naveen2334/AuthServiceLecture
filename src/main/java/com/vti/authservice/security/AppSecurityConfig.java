@@ -14,7 +14,8 @@ public class AppSecurityConfig {
 	public SecurityFilterChain securityConfig(HttpSecurity http) throws Exception{
 		http.authorizeHttpRequests(
 				 req->{
-					 req.anyRequest().permitAll();
+					req.requestMatchers("/api/v1/welcome/hello").permitAll()
+					.anyRequest().authenticated();
 				 }
 				);
 		return http.build();
